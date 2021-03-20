@@ -52,7 +52,7 @@ class Game:
     def update(self):
         # update portion of the game loop
         self.all_sprites.update()
-        self.camera.update(self.player)
+        self.camera.update(self.player) # ici on peut mettre n'importe quel sprite
 
     def draw_grid(self):
         for x in range(0, WIDTH, TILESIZE):
