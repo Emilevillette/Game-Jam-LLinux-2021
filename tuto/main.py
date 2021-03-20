@@ -84,6 +84,10 @@ class Game:
     def show_go_screen(self):
         pass
 
+moving_sprites = pg.sprite.Group()
+
+
+
 # create the game object
 g = Game()
 g.show_start_screen()
