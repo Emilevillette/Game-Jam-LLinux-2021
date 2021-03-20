@@ -28,9 +28,6 @@ class Player:
     def cancel(self):
         self.X -= self.moveX
         self.Y -= self.moveY
-    
-    def draw(self):
-        screen.blit(self.img,(self.X,self.Y))
 
     def isCollision(self,x,y):
         distance = math.sqrt(math.pow(self.X-x,2) + math.pow(self.Y-y,2))
