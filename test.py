@@ -1,5 +1,6 @@
 import pygame
 import random
+import math
 
 # Initialize the pygame
 pygame.init()
@@ -44,13 +45,15 @@ for i in range(num_of_enemies):
     enemyX_change.append(0.3)
     enemyY_change.append(0)
 
-
 def player(x,y):
     screen.blit(playerImg,(x,y)) #draw
 
 def enemy(x,y,i):
     screen.blit(enemyImg[i],(x,y)) #draw
 
+def isCollision(X,Y,other_X,other_Y):
+    distance = math.sqrt(math.pow(X-other_X,2) + math.pow(Y-other_Y,2))
+    return (distance < 64)
 
 # Game Loop
 running = True
@@ -87,6 +90,12 @@ while running :
     playerX+=playerX_change
     playerY+=playerY_change
 
+    for i in range (num_of_enemies):
+        collision = isCollision(playerX,playerY,enemyX[i],enemyY[i])
+        if collision:
+            playerX-=playerX_change
+            playerY-=playerY_change
+
     enemyX+=enemyX_change
     enemyY+=enemyY_change
 
@@ -101,9 +110,6 @@ while running :
     elif playerY >= sizeY-sizePlayer:
         playerY = sizeY-sizePlayer
 
-    player(playerX,playerY)
-
-
     for i in range (6) :
         # Boundaries enemy
         if enemyX[i] <= 0 :
@@ -117,5 +123,9 @@ while running :
             enemyX_change[i] = -enemyX_change
         elif enemyY[i] >= sizeY-sizeEnemy[i]:
             enemyY[i] = sizeY-sizeEnemy[i]
+
+    for i in range (num_of_enemies):
         enemy(enemyX[i],enemyY[i],i)
+
+    player(playerX,playerY)
     pygame.display.update()
