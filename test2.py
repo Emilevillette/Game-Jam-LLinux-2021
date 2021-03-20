@@ -2,6 +2,7 @@ import pygame
 import random
 import math
 from Player import Player
+from Enemy import Enemy
 
 # Initialize the pygame
 pygame.init()
@@ -26,26 +27,15 @@ def player():
     screen.blit(p.img,(p.X,p.Y)) #draw
 
 # Enemies
-enemyImg = []
-sizeEnemy = []
-enemyX = []
-enemyY = []
-enemyX_change = []
-enemyY_change = []
+enemies = []
 num_of_enemies = 6
 
 # Enemy
 for i in range(num_of_enemies):
-    enemyImg.append(pygame.image.load('ressources/images/joker.png'))
-    sizeEnemy.append(64)
-    enemyX.append(random.randint(0,736))
-    enemyY.append(random.randint(0,564))
-    enemyX_change.append(0.3)
-    enemyY_change.append(0)
+    enemies.append(Enemy(pygame.image.load('ressources/images/joker.png'),random.randint(0,736),random.randint(0,564),0.3))
 
-
-def enemy(x,y,i):
-    screen.blit(enemyImg[i],(x,y)) #draw
+def enemy(i):
+    screen.blit(enemies[i].img, (enemies[i].X, enemies[i].Y)) #draw
 
 # Game Loop
 running = True
@@ -78,14 +68,10 @@ while running :
 
     p.update()
 
-    for i in range (num_of_enemies):
-        collision = p.isCollision(enemyX[i],enemyY[i])
+    for i in range (len(enemies)):
+        collision = p.isCollision(enemies[i].X,enemies[i].Y)
         if collision:
-            playerX-=playerX_change
-            playerY-=playerY_change
-
-    enemyX+=enemyX_change
-    enemyY+=enemyY_change
+            p.cancel()
 
     # Boundaries player
     if p.X <= 0 :
@@ -100,20 +86,20 @@ while running :
 
     for i in range (6) :
         # Boundaries enemy
-        if enemyX[i] <= 0 :
-            enemyX[i] = 0 
-            enemyX_change[i] = -enemyX_change       
-        elif enemyX[i] >= sizeX-sizeEnemy[i]:
-            enemyX_change[i] = -enemyX_change
+        if enemies[i].X <= 0 :
+            enemies[i].X = 0 
+            enemies[i].cancel()     
+        elif enemies[i].X >= sizeX-enemies[i].size:
+            enemies[i].cancel()     
         # enemyX = sizeX-sizePlayer
 
-        if enemyY[i] <= 0 :
-            enemyX_change[i] = -enemyX_change
-        elif enemyY[i] >= sizeY-sizeEnemy[i]:
-            enemyY[i] = sizeY-sizeEnemy[i]
+        if enemies[i].Y <= 0 :
+            enemies[i].cancel()
+        elif enemies[i].Y >= sizeY-enemies[i].size:
+            enemies[i].Y = sizeY-enemies[i].size
 
     for i in range (num_of_enemies):
-        enemy(enemyX[i],enemyY[i],i)
+        enemy(i)
 
     player()
     pygame.display.update()
