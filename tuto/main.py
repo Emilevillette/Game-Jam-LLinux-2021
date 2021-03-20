@@ -3,6 +3,7 @@
 # Project setup
 # Video link: https://youtu.be/3UxnelT9aCo
 import pygame as pg
+import pytmx
 import sys
 from os import path
 from settings import *
@@ -21,7 +22,10 @@ class Game:
     def load_data(self):
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, '../ressources/images')
-        self.map = Map(path.join(game_folder, 'map2.txt'))
+        map_folder = path.join(game_folder, '../ressources/map')
+        self.map = TiledMap(path.join(map_folder, 'whitehouse_test.tmx'))
+        self.map_img = self.map.make_map()
+        self.map_rect = self.map_img.get_rect()
         self.player_img = pg.image.load(path.join(img_folder, PLAYER_IMG)).convert_alpha()
 
     def new(self):
@@ -29,12 +33,17 @@ class Game:
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         # self.player = Player(self, 10, 10) # départ du joueur en nombre de carré
-        for row, tiles in enumerate(self.map.data): #enumerate pr avoir les 2 données index:value
-            for col, tile in enumerate(tiles):
-                if tile == '1':
-                    Wall(self, col, row)
-                if tile == 'P':
-                    self.player = Player(self, col, row)   
+        # for row, tiles in enumerate(self.map.data): #enumerate pr avoir les 2 données index:value
+        #     for col, tile in enumerate(tiles):
+        #         if tile == '1':
+        #             Wall(self, col, row)
+        #         if tile == 'P':
+        #             self.player = Player(self, col, row)
+        for tile_object in self.map.tmxdata.objects:
+            if tile_object.name == 'player':
+                self.player = Player(self, tile_object.x, tile_object.y) 
+            if tile_object.name == 'wall':
+                Wall(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
         self.camera = Camera(self.map.width, self.map.height)
 
 
@@ -63,8 +72,9 @@ class Game:
             pg.draw.line(self.screen, LIGHTGREY, (0, y), (WIDTH, y))
 
     def draw(self):
-        self.screen.fill(BGCOLOR)
-        self.draw_grid()
+        # self.screen.fill(BGCOLOR)
+        self.screen.blit(self.map_img, self.camera.apply_rect(self.map_rect))
+        # self.draw_grid()
         for sprite in self.all_sprites:
             self.screen.blit(sprite.image, self.camera.apply(sprite))
         pg.display.flip()
