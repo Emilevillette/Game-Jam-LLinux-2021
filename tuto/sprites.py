@@ -1,5 +1,6 @@
 import pygame as pg
 from settings import *
+from os import path
 import sys
 
 vec = pg.math.Vector2  # usefull for lots of thing
@@ -13,17 +14,47 @@ class Player(pg.sprite.Sprite):
         self.vel = vec(0, 0)
         self.pos = vec(x, y)
         self.is_animating = False
-        self.sprites = []
-        self.sprites.append(pg.image.load("Sprite-00021.png"))
-        self.sprites.append(pg.image.load("Sprite-00022.png"))
-        self.sprites.append(pg.image.load("Sprite-00023.png"))
-        self.sprites.append(pg.image.load("Sprite-00024.png"))
-        self.sprites.append(pg.image.load("Sprite-00025.png"))
-        self.sprites.append(pg.image.load("Sprite-00026.png"))
-        self.sprites.append(pg.image.load("Sprite-00027.png"))
-        self.sprites.append(pg.image.load("Sprite-00028.png"))
+        game_folder = path.dirname(__file__)
+        sprites_folder = path.join(game_folder, '../ressources/images')
+        self.spritesl = []
+        self.spritesl.append(pg.image.load(path.join(sprites_folder, "Spritegauche/Sprite-0002gauche1.png")))
+        self.spritesl.append(pg.image.load(path.join(sprites_folder, "Spritegauche/Sprite-0002gauche2.png")))
+        self.spritesl.append(pg.image.load(path.join(sprites_folder, "Spritegauche/Sprite-0002gauche3.png")))
+        self.spritesl.append(pg.image.load(path.join(sprites_folder, "Spritegauche/Sprite-0002gauche4.png")))
+        self.spritesl.append(pg.image.load(path.join(sprites_folder, "Spritegauche/Sprite-0002gauche5.png")))
+        self.spritesl.append(pg.image.load(path.join(sprites_folder, "Spritegauche/Sprite-0002gauche6.png")))
+        self.spritesl.append(pg.image.load(path.join(sprites_folder, "Spritegauche/Sprite-0002gauche7.png")))
+        self.spritesl.append(pg.image.load(path.join(sprites_folder, "Spritegauche/Sprite-0002gauche8.png")))
+        self.spritesr = []
+        self.spritesr.append(pg.image.load(path.join(sprites_folder, "SpriteDroite/Sprite-00021.png")))
+        self.spritesr.append(pg.image.load(path.join(sprites_folder, "SpriteDroite/Sprite-00022.png")))
+        self.spritesr.append(pg.image.load(path.join(sprites_folder, "SpriteDroite/Sprite-00023.png")))
+        self.spritesr.append(pg.image.load(path.join(sprites_folder, "SpriteDroite/Sprite-00024.png")))
+        self.spritesr.append(pg.image.load(path.join(sprites_folder, "SpriteDroite/Sprite-00025.png")))
+        self.spritesr.append(pg.image.load(path.join(sprites_folder, "SpriteDroite/Sprite-00026.png")))
+        self.spritesr.append(pg.image.load(path.join(sprites_folder, "SpriteDroite/Sprite-00027.png")))
+        self.spritesr.append(pg.image.load(path.join(sprites_folder, "SpriteDroite/Sprite-00028.png")))
+        self.spritesu = []
+        self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut1.png")))
+        self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut2.png")))
+        self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut3.png")))
+        self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut4.png")))
+        self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut5.png")))
+        self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut6.png")))
+        self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut7.png")))
+        self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut8.png")))
+        self.spritesd = []
+        self.spritesd.append(pg.image.load(path.join(sprites_folder, "Spritebas/Sprite-0002bas1.png")))
+        self.spritesd.append(pg.image.load(path.join(sprites_folder, "Spritebas/Sprite-0002bas2.png")))
+        self.spritesd.append(pg.image.load(path.join(sprites_folder, "Spritebas/Sprite-0002bas3.png")))
+        self.spritesd.append(pg.image.load(path.join(sprites_folder, "Spritebas/Sprite-0002bas4.png")))
+        self.spritesd.append(pg.image.load(path.join(sprites_folder, "Spritebas/Sprite-0002bas5.png")))
+        self.spritesd.append(pg.image.load(path.join(sprites_folder, "Spritebas/Sprite-0002bas6.png")))
+        self.spritesd.append(pg.image.load(path.join(sprites_folder, "Spritebas/Sprite-0002bas7.png")))
+        self.spritesd.append(pg.image.load(path.join(sprites_folder, "Spritebas/Sprite-0002bas8.png")))
         self.current_sprite = 0
-        self.image = self.sprites[self.current_sprite]
+        self.direction = 'right'
+        self.image = self.spritesl[self.current_sprite]
         self.rect = self.image.get_rect()
 
     def animate(self):
@@ -35,15 +66,19 @@ class Player(pg.sprite.Sprite):
         if keys[pg.K_LEFT] or keys[pg.K_q]:
             self.vel.x = - PLAYER_SPEED
             self.animate()
+            self.direction = 'left'
         if keys[pg.K_RIGHT] or keys[pg.K_d]:
             self.vel.x = PLAYER_SPEED
             self.animate()
+            self.direction = 'right'
         if keys[pg.K_UP] or keys[pg.K_z]:
             self.vel.y = - PLAYER_SPEED
             self.animate()
+            self.direction = 'up'
         if keys[pg.K_DOWN] or keys[pg.K_s]:
             self.vel.y = PLAYER_SPEED
             self.animate()
+            self.direction = 'down'
         if self.vel.x != 0 and self.vel.y != 0:
             self.vel *= 0.7071  # si diag : divisé par sqrt(2) pour ne pas DRIFTEEEEEER (trop vite quoi)
 
@@ -77,11 +112,18 @@ class Player(pg.sprite.Sprite):
         if self.is_animating == True:
             self.current_sprite += 1
 
-            if self.current_sprite >= len(self.sprites):
+            if self.current_sprite >= len(self.spritesd):
                 self.current_sprite = 0
                 self.is_animating = False
 
-            self.image = self.sprites[self.current_sprite]
+            if self.direction == 'left':
+                self.image = self.spritesl[self.current_sprite]
+            elif self.direction == 'down':
+                self.image = self.spritesd[self.current_sprite]
+            elif self.direction == 'up':
+                self.image = self.spritesu[self.current_sprite]
+            else:
+                self.image = self.spritesr[self.current_sprite]
 
 
 class Wall(pg.sprite.Sprite):
