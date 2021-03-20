@@ -20,3 +20,4 @@ GRIDHEIGHT = HEIGHT / TILESIZE
 
 # Player settings
 PLAYER_SPEED = 1000
+PLAYER_IMG = 'trump1sprite.png'
