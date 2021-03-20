@@ -1,26 +1,26 @@
-import pygame
+import pygame as pg
 import random
 import math
 from Player import Player
 
-# Initialize the pygame
-pygame.init()
+# Initialize the pg
+pg.init()
 
 # Create the screen
 sizeX = 800
 sizeY = 600
-screen = pygame.display.set_mode((sizeX,sizeY))
+screen = pg.display.set_mode((sizeX,sizeY))
 
 # Background
-background = pygame.image.load('ressources/maps/test.png')
+background = pg.image.load('ressources/maps/test.png')
 
 # Caption and icon
-pygame.display.set_caption("Pog Pog Pog")
-icon = pygame.image.load('ressources/images/pog.png')
-pygame.display.set_icon(icon)
+pg.display.set_caption("Pog Pog Pog")
+icon = pg.image.load('ressources/images/pog.png')
+pg.display.set_icon(icon)
 
 # Player
-p = Player(pygame.image.load('ressources/images/player.png'),370,480,0.5)
+p = Player(pg.image.load('ressources/images/player.png'),370,480,0.5)
 
 def player():
     screen.blit(p.img,(p.X,p.Y)) #draw
@@ -36,7 +36,7 @@ num_of_enemies = 6
 
 # Enemy
 for i in range(num_of_enemies):
-    enemyImg.append(pygame.image.load('ressources/images/joker.png'))
+    enemyImg.append(pg.image.load('ressources/images/joker.png'))
     sizeEnemy.append(64)
     enemyX.append(random.randint(0,736))
     enemyY.append(random.randint(0,564))
@@ -57,23 +57,23 @@ while running :
     screen.blit(background,(0,0))
     
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
             running = False
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
+        elif event.type == pg.KEYDOWN:
+            if event.key == pg.K_LEFT:
                 p.move(-1,0)
-            elif event.key == pygame.K_RIGHT:
+            elif event.key == pg.K_RIGHT:
                 p.move(1,0)
-            elif event.key == pygame.K_DOWN:
+            elif event.key == pg.K_DOWN:
                 p.move(0,1)
-            elif event.key == pygame.K_UP:
+            elif event.key == pg.K_UP:
                 p.move(0,-1)
 
-        elif event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+        elif event.type == pg.KEYUP:
+            if event.key == pg.K_LEFT or event.key == pg.K_RIGHT:
                 p.stop()
-            elif event.key == pygame.K_DOWN or event.key == pygame.K_UP:
+            elif event.key == pg.K_DOWN or event.key == pg.K_UP:
                 p.stop()
 
     p.update()
@@ -116,4 +116,4 @@ while running :
         enemy(enemyX[i],enemyY[i],i)
 
     player()
-    pygame.display.update()
+    pg.display.update()
