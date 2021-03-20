@@ -35,7 +35,7 @@ class Player(pg.sprite.Sprite):
         self.spritesr.append(pg.image.load(path.join(sprites_folder, "SpriteDroite/Sprite-00027.png")))
         self.spritesr.append(pg.image.load(path.join(sprites_folder, "SpriteDroite/Sprite-00028.png")))
         self.spritesu = []
-        self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut2.png"))) #TO CHANGE
+        self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut1.png")))
         self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut2.png")))
         self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut3.png")))
         self.spritesu.append(pg.image.load(path.join(sprites_folder, "SpriteHaut/Sprite-0002haut4.png")))
