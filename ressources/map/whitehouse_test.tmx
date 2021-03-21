@@ -326,7 +326,7 @@
  <objectgroup id="7" name="Obstacles">
   <object id="9" name="wall" x="0" y="0" width="32" height="1376"/>
   <object id="19" name="wall" x="1696" y="800" width="32" height="576"/>
-  <object id="22" name="player" x="736" y="104"/>
+  <object id="22" name="player" x="760" y="144"/>
   <object id="23" name="wall" x="1248" y="0" width="32" height="480"/>
   <object id="24" name="wall" x="800" y="0" width="32" height="480"/>
   <object id="25" name="wall" x="1056" y="800" width="32" height="480"/>
@@ -654,10 +654,8 @@
   <object id="403" name="mob" type="5" x="936" y="976"/>
   <object id="407" name="mob" type="6" x="112" y="1424"/>
   <object id="408" name="mob" type="7" x="1616" y="1264"/>
-  <object id="409" name="mob" type="8" x="1315" y="386"/>
   <object id="410" name="mob" type="9" x="1728" y="576"/>
   <object id="411" name="mob" type="10" x="4072" y="712"/>
-  <object id="412" name="mob" type="11" x="3040" y="104"/>
   <object id="413" name="mob" type="12" x="2493.33" y="1121.33"/>
   <object id="414" name="mob" type="13" x="2016" y="1693.33"/>
   <object id="415" name="mob" type="14" x="3569.33" y="1618.67"/>
@@ -665,7 +663,6 @@
   <object id="417" name="mob" type="16" x="2577.33" y="2094.67"/>
   <object id="441" name="mob" type="3" x="1200" y="688"/>
   <object id="442" name="mob" type="20" x="1637.33" y="1809.33"/>
-  <object id="443" name="mob" type="23" x="2480" y="400"/>
  </objectgroup>
  <objectgroup id="10" name="Destination" locked="1">
   <object id="399" name="objectif" x="2767" y="2511.5" width="62.5" height="62"/>
