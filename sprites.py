@@ -151,9 +151,6 @@ class Mob(pg.sprite.Sprite):
         self.passe = 0
 
     def trajet(self, x1, x2, y1, y2):
-        self.image = pg.transform.rotate(self.game.mob_img, self.rot)
-        self.image = pg.transform.scale(self.image, PLAYER_RADIUS)
-        self.rect.center = self.pos
         if self.passe < 2:
             if self.passe == 0:
                 self.vel.x = MOB_SPEED
@@ -191,7 +188,9 @@ class Mob(pg.sprite.Sprite):
             self.trajet(1216, 96, 704, 544)
         if self.id == "3":
             self.trajet(96, 1216, 544, 704)
-
+        self.image = pg.transform.rotate(self.game.mob_img, self.rot)
+        self.image = pg.transform.scale(self.image, PLAYER_RADIUS)
+        self.rect.center = self.pos
 
 
 
