@@ -132,6 +132,7 @@ class Player(pg.sprite.Sprite):
                 self.image = self.spritesr[self.current_sprite]
             # self.image = pg.transform.scale(self.image, PLAYER_RADIUS)
 
+
 class Mob(pg.sprite.Sprite):
     def __init__(self, game, x, y, id):
         self.groups = game.all_sprites, game.mobs
@@ -149,43 +150,50 @@ class Mob(pg.sprite.Sprite):
         self.acc = vec(0, 0)
         self.passe = 0
 
+    def trajet(self, x1, x2, y1, y2):
+        self.image = pg.transform.rotate(self.game.mob_img, self.rot)
+        self.image = pg.transform.scale(self.image, PLAYER_RADIUS)
+        self.rect.center = self.pos
+        if self.passe < 2:
+            if self.passe == 0:
+                self.vel.x = MOB_SPEED
+            if self.pos[0] >= x1 and self.passe == 0:
+                self.passe = 1
+                self.rot += -90
+                self.vel.x = 0
+                if self.passe == 1:
+                    self.vel.y = MOB_SPEED
+            if self.pos[1] >= y1:
+                self.rot -= 90
+                self.vel.y = 0
+                self.passe = 2
+        if self.passe >= 2:
+            if self.passe == 2:
+                self.vel.x = -MOB_SPEED
+            if self.pos[0] <= x2 and self.passe == 2:
+                self.passe = 3
+                self.rot -= 90
+                self.vel.x = 0
+                if self.passe == 3:
+                    self.vel.y = -MOB_SPEED
+            if self.pos[1] <= y2:
+                self.rot = 0
+                self.passe = 0
+                self.vel.y = 0
+                self.vel.x = MOB_SPEED
+
     def update(self):
         self.acc = vec(MOB_SPEED, 0).rotate(-self.rot)
         self.pos += self.vel * self.game.dt
         self.rect = self.image.get_rect()
         self.rect.center = self.hit_rect.center
         if self.id == "1":
-            if self.passe < 2:
-                if self.passe == 0:
-                    self.vel.x = MOB_SPEED
-                if self.pos[0] >= 1216 and self.passe == 0:
-                    self.passe = 1
-                    self.rot += -90
-                    self.vel.x = 0
-                    if self.passe == 1:
-                        self.vel.y = MOB_SPEED
-                if self.pos[1] >= 704:
-                    self.rot -= 90
-                    self.vel.y = 0
-                    self.passe = 2
-            if self.passe >= 2:
-                if self.passe == 2:
-                    self.vel.x = -MOB_SPEED
-                if self.pos[0] <= 96 and self.passe == 2:
-                    self.passe = 3
-                    self.rot -= 90
-                    self.vel.x = 0
-                    if self.passe == 3:
-                        self.vel.y = -MOB_SPEED
-                if self.pos[1] <= 544:
-                    self.rot = 0
-                    self.passe = 0
-                    self.vel.y = 0
-                    self.vel.x = MOB_SPEED
+            self.trajet(1216, 96, 704, 544)
+        if self.id == "3":
+            self.trajet(96, 1216, 544, 704)
 
-            self.image = pg.transform.rotate(self.game.mob_img, self.rot)
-            self.image = pg.transform.scale(self.image, PLAYER_RADIUS)
-        self.rect.center = self.pos
+
+
 
 class Wall(pg.sprite.Sprite):
     def __init__(self, game, x, y, w, h):
@@ -199,6 +207,7 @@ class Wall(pg.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         self.hit_rect = self.rect
+
 
 class Objectif(pg.sprite.Sprite):
     def __init__(self, game, x, y, w, h):
