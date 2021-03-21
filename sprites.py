@@ -149,6 +149,7 @@ class Mob(pg.sprite.Sprite):
         self.vel = vec(0, 0)
         self.acc = vec(0, 0)
         self.passe = 0
+        self.first = True
 
     def trajet(self, x1, x2, y1, y2):
         if self.passe < 2:
@@ -185,8 +186,14 @@ class Mob(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = self.hit_rect.center
         if self.id == "1":
+            if self.first == True:
+                passe = 0
+                self.first = False
             self.trajet(1216, 96, 704, 544)
         if self.id == "3":
+            if self.first == True:
+                passe = 2
+                self.first = False
             self.trajet(96, 1216, 544, 704)
         self.image = pg.transform.rotate(self.game.mob_img, self.rot)
         self.image = pg.transform.scale(self.image, PLAYER_RADIUS)
