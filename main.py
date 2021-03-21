@@ -41,6 +41,7 @@ class Game:
         self.walls = pg.sprite.Group()
         self.mobs = pg.sprite.Group()
         self.playerz = pg.sprite.Group()
+        self.objectif = pg.sprite.Group()
         # self.player = Player(self, 10, 10) # départ du joueur en nombre de carré
         # for row, tiles in enumerate(self.map.data): #enumerate pr avoir les 2 données index:value
         #     for col, tile in enumerate(tiles):
@@ -55,6 +56,8 @@ class Game:
                 Wall(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
             if tile_object.name == "mob":
                 Mob(self, tile_object.x, tile_object.y, tile_object.type)
+            if tile_object.name == "objectif":
+                Objectif(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
         self.camera = Camera(self.map.width, self.map.height)
 
 
@@ -76,6 +79,9 @@ class Game:
         self.all_sprites.update()
         self.camera.update(self.player) # ici on peut mettre n'importe quel sprite
         hits = pg.sprite.spritecollide(self.player, self.mobs, False, collide_hit_rect)
+        for hit in hits:
+            self.playing = False
+        hits = pg.sprite.spritecollide(self.player, self.objectif, False, collide_hit_rect)
         for hit in hits:
             self.playing = False
         # hits = pg.sprite.groupcollide(self.mobs, self.playerz, False, False)

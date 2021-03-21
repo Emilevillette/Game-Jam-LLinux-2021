@@ -200,6 +200,18 @@ class Wall(pg.sprite.Sprite):
         self.rect.y = y
         self.hit_rect = self.rect
 
+class Objectif(pg.sprite.Sprite):
+    def __init__(self, game, x, y, w, h):
+        self.groups = game.objectif
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
+        self.rect = pg.Rect(x, y, w, h)
+        self.x = x
+        self.y = y
+
+        self.rect.x = x
+        self.rect.y = y
+
 # class Wall(pg.sprite.Sprite):
 #     def __init__(self, game, x, y):
 #         self.groups = game.all_sprites, game.walls
