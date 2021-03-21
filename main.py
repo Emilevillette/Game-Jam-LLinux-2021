@@ -84,6 +84,7 @@ class Game:
             self.screen.blit(sprite.image, self.camera.apply(sprite))
         self.fog.fill(NIGHT_COLOR)
         self.light_rect.center = self.camera.apply(self.player).center
+        self.light_rect.center = self.camera.apply(self.player).center
         self.fog.blit(self.light_mask, self.light_rect)
         self.screen.blit(self.fog, (0, 0), special_flags=pg.BLEND_MULT)#obtien les pixels de tt les couches
         pg.display.flip()
