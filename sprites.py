@@ -242,7 +242,6 @@ class Mob(pg.sprite.Sprite):
 
 
 
-
 class Wall(pg.sprite.Sprite):
     def __init__(self, game, x, y, w, h):
         self.groups = game.walls
