@@ -83,6 +83,10 @@ class Player(pg.sprite.Sprite):
 
             self.image = self.sprites[self.current_sprite]
 
+class Mob(pg.sprite.Sprite):
+    def __init__(selfself, game, x, y):
+        self.groups = game.all_sprites, game.walls
+        pg.sprite.Sprite.__init__(self, self.groups)
 
 class Wall(pg.sprite.Sprite):
     def __init__(self, game, x, y, w, h):
