@@ -194,6 +194,10 @@ class Mob(pg.sprite.Sprite):
             self.trajet(1216, 96, 704, 544, 0, 1)
         if self.id == "3":
             self.trajet(1216, 96, 704, 544, 0, 1)
+        if self.id == "4":
+            self.trajet(1216, 96, 704, 544, 0, 1)
+        if self.id == "5":
+            self.trajet(1216, 96, 704, 544, 0, 1)
         self.rect.center = self.pos
 
 
