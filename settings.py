@@ -27,7 +27,7 @@ MOB_SPEED = 300
 MOB_HIT_RECT = pg.Rect(0, 0, 640, 640)
 
 # Player settings
-PLAYER_SPEED = 600
+PLAYER_SPEED = 250
 PLAYER_IMG = 'trump1sprite.png'
 PLAYER_RADIUS = (128,128)
 PLAYER_HIT_RECT = pg.Rect(0, 0, 32, 32)

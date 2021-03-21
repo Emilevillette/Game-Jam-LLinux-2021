@@ -665,7 +665,7 @@
   <object id="417" name="mob" type="16" x="2577.33" y="2094.67"/>
   <object id="441" name="mob" type="3" x="1200" y="688"/>
   <object id="442" name="mob" type="20" x="1637.33" y="1809.33"/>
-  <object id="443" name="mob" type="2" x="2480" y="400"/>
+  <object id="443" name="mob" type="23" x="2480" y="400"/>
  </objectgroup>
  <objectgroup id="10" name="Destination" locked="1">
   <object id="399" name="objectif" x="2767" y="2511.5" width="62.5" height="62"/>

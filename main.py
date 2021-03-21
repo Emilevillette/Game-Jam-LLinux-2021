@@ -19,6 +19,30 @@ class Game:
         self.clock = pg.time.Clock()
         pg.key.set_repeat(500, 100) #apres 0.5, move ts les 0.1
         self.load_data()
+    
+    def draw_text(self, text, font_name, size, color, x, y, align="nw"):
+        font = pg.font.Font(font_name, size)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect()
+        if align == "nw":
+            text_rect.topleft = (x, y)
+        if align == "ne":
+            text_rect.topright = (x, y)
+        if align == "sw":
+            text_rect.bottomleft = (x, y)
+        if align == "se":
+            text_rect.bottomright = (x, y)
+        if align == "n":
+            text_rect.midtop = (x, y)
+        if align == "s":
+            text_rect.midbottom = (x, y)
+        if align == "e":
+            text_rect.midright = (x, y)
+        if align == "w":
+            text_rect.midleft = (x, y)
+        if align == "center":
+            text_rect.center = (x, y)
+        self.screen.blit(text_surface, text_rect)
 
     def load_data(self):
         game_folder = path.dirname(__file__)
@@ -30,6 +54,7 @@ class Game:
         self.map_rect = self.map_img.get_rect()
         self.player_img = pg.image.load(path.join(img_folder, PLAYER_IMG)).convert_alpha()
         self.mob_img = pg.image.load(path.join(img_folder, MOB_IMG)).convert_alpha()
+        self.title_font = path.join(img_folder, 'Impacted2.0.ttf')
         # lighting effect
         self.fog = pg.Surface((WIDTH, HEIGHT))
         self.fog.fill(NIGHT_COLOR)
@@ -97,7 +122,7 @@ class Game:
         hits = pg.sprite.spritecollide(self.player, self.objectif, False, collide_hit_rect)
         for hit in hits:
             self.win_sound.play()
-            self.playing = False
+            g.show_win_screen()
         # hits = pg.sprite.groupcollide(self.mobs, self.playerz, False, False)
         # for hit in hits:
         #     self.playing = False
@@ -128,12 +153,49 @@ class Game:
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_ESCAPE:
                     self.quit()
+                if event.key == pg.K_r:
+                    self.playing = False
 
     def show_start_screen(self):
         pass
 
     def show_go_screen(self):
-        pass
+        self.screen.fill(BLACK)
+        self.draw_text("GAME OVER", self.title_font, 100, RED, WIDTH/2, HEIGHT/2, align="center")
+        self.draw_text("Press R to start", self.title_font, 75, WHITE, WIDTH / 2, HEIGHT * 3 / 4, align="center")
+        pg.display.flip()
+        self.wait_for_key()
+
+    def show_win_screen(self):
+        self.screen.fill(BLACK)
+        self.draw_text("YOU STOP THE COUNT !", self.title_font, 80, RED, WIDTH/2, HEIGHT/2, align="center")
+        self.draw_text("Press escape to quit", self.title_font, 70, WHITE, WIDTH / 2, HEIGHT * 3 / 4, align="center")
+        pg.display.flip()
+        pg.event.wait()
+        waiting = True
+        x = 1
+        while waiting:
+            self.clock.tick(FPS)
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    waiting = False
+                    self.quit()
+                if event.type == pg.KEYDOWN:
+                    if event.key == pg.K_ESCAPE:
+                        self.quit()
+
+    def wait_for_key(self):
+        pg.event.wait()
+        waiting = True
+        while waiting:
+            self.clock.tick(FPS)
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    waiting = False
+                    self.quit()
+                if event.type == pg.KEYDOWN:
+                    if event.key == pg.K_r:
+                        waiting = False
 
 moving_sprites = pg.sprite.Group()
 
