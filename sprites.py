@@ -196,9 +196,6 @@ class Mob(pg.sprite.Sprite):
             self.trajet(1216, 96, 704, 544, 0, 1)
         if self.id == "4":
             self.trajet(928, 192, 1248, 1152, 0, 1)
-        if self.id == "5":
-            self.trajet(192, 928, 1120, 960, 0, 1)
-            self.trajet(1216, 96, 704, 544, 0, 1)
 
 
         if self.id == "2":
@@ -211,6 +208,14 @@ class Mob(pg.sprite.Sprite):
             self.trajet(2400, 1300, 60, 400, 0, 1)
         if self.id == "23":
             self.trajet(1300, 2500, 60, 400, 0, 1)
+
+
+        #OVALE
+        if self.id == "12":
+            self.trajet(3180, 2500, 1300, 1121, 0, 1)
+            #dest spawn dest spawn
+        if self.id == "16":
+            self.trajet(3100, 2600, 2800, 2100, 0, 1)
 
         #Dernier salon avec ordinateur
         if self.id == "11":
