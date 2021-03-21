@@ -170,8 +170,8 @@ class Game:
 
     def show_win_screen(self):
         self.screen.fill(BLACK)
-        self.draw_text("YOU STOP THE COUNT !", self.title_font, 80, RED, WIDTH/2, HEIGHT/2, align="center")
-        self.draw_text("Press escape to quit", self.title_font, 70, WHITE, WIDTH / 2, HEIGHT * 3 / 4, align="center")
+        self.draw_text("YOU STOPPED THE COUNT !", self.title_font, 70, RED, WIDTH/2, HEIGHT/2, align="center")
+        self.draw_text("Press escape to quit", self.title_font, 60, WHITE, WIDTH / 2, HEIGHT * 3 / 4, align="center")
         pg.display.flip()
         pg.event.wait()
         waiting = True
