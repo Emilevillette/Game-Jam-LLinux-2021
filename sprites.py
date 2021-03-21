@@ -180,12 +180,45 @@ class Mob(pg.sprite.Sprite):
                 self.vel.y = 0
                 self.vel.x = MOB_SPEED
 
+    def trajet(self, x1, x2, y1, y2 , cw):
+        self.image = pg.transform.rotate(self.game.mob_img, self.rot)
+        self.image = pg.transform.scale(self.image, PLAYER_RADIUS)
+        self.rect.center = self.pos
+        if self.passe < 2:
+            if self.passe == 0:
+                self.vel.x = cw * MOB_SPEED
+            if self.pos[0] >= x1 and self.passe == 0:
+                self.passe = 1
+                self.rot += -90
+                self.vel.x = 0
+                if self.passe == 1:
+                    self.vel.y = cw * MOB_SPEED
+            if self.pos[1] >= y1:
+                self.rot -= 90
+                self.vel.y = 0
+                self.passe = 2
+        if self.passe >= 2:
+            if self.passe == 2:
+                self.vel.x = -cw * MOB_SPEED
+            if self.pos[0] <= x2 and self.passe == 2:
+                self.passe = 3
+                self.rot -= 90
+                self.vel.x = 0
+                if self.passe == 3:
+                    self.vel.y = -cw * MOB_SPEED
+            if self.pos[1] <= y2:
+                self.rot = 0
+                self.passe = 0
+                self.vel.y = 0
+                self.vel.x = MOB_SPEED
+
     def update(self):
         self.acc = vec(MOB_SPEED, 0).rotate(-self.rot)
         self.pos += self.vel * self.game.dt
         self.rect = self.image.get_rect()
         self.rect.center = self.hit_rect.center
         if self.id == "1":
+<<<<<<< Updated upstream
             if self.first == True:
                 passe = 0
                 self.first = False
@@ -198,6 +231,14 @@ class Mob(pg.sprite.Sprite):
         self.image = pg.transform.rotate(self.game.mob_img, self.rot)
         self.image = pg.transform.scale(self.image, PLAYER_RADIUS)
         self.rect.center = self.pos
+=======
+            self.trajet(1216, 96, 704, 544, 1)
+        if self.id == "3":
+            self.trajet(96, 1216, 544, 704, -1)
+
+
+
+>>>>>>> Stashed changes
 
 
 

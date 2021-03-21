@@ -52,7 +52,7 @@ class Game:
         self.mobs = pg.sprite.Group()
         self.playerz = pg.sprite.Group()
         self.objectif = pg.sprite.Group()
-        # self.player = Player(self, 10, 10) # départ du joueur en nombre de carré
+        # départ du joueur en nombre de carré
         # for row, tiles in enumerate(self.map.data): #enumerate pr avoir les 2 données index:value
         #     for col, tile in enumerate(tiles):
         #         if tile == '1':
