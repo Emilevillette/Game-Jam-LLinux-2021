@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="150" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="381">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="150" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="393">
  <editorsettings>
   <export target="whitehouse_test.csv" format="csv"/>
  </editorsettings>
@@ -455,29 +455,17 @@
   <object id="184" name="wall" x="2304" y="192" width="96" height="32"/>
   <object id="186" name="wall" x="2304" y="96" width="96" height="32"/>
   <object id="200" name="wall" x="3008" y="320" width="96" height="32"/>
-  <object id="201" name="wall" x="3040" y="352" width="32" height="32"/>
   <object id="202" name="wall" x="3008" y="192" width="96" height="32"/>
-  <object id="203" name="wall" x="3040" y="224" width="32" height="32"/>
   <object id="204" name="wall" x="3168" y="320" width="96" height="32"/>
-  <object id="205" name="wall" x="3200" y="352" width="32" height="32"/>
   <object id="206" name="wall" x="3168" y="192" width="96" height="32"/>
-  <object id="207" name="wall" x="3200" y="224" width="32" height="32"/>
   <object id="208" name="wall" x="3328" y="320" width="96" height="32"/>
-  <object id="209" name="wall" x="3360" y="352" width="32" height="32"/>
   <object id="210" name="wall" x="3328" y="192" width="96" height="32"/>
-  <object id="211" name="wall" x="3360" y="224" width="32" height="32"/>
   <object id="212" name="wall" x="3488" y="320" width="96" height="32"/>
-  <object id="213" name="wall" x="3520" y="352" width="32" height="32"/>
   <object id="214" name="wall" x="3488" y="192" width="96" height="32"/>
-  <object id="215" name="wall" x="3520" y="224" width="32" height="32"/>
   <object id="216" name="wall" x="3648" y="320" width="96" height="32"/>
-  <object id="217" name="wall" x="3680" y="352" width="32" height="32"/>
   <object id="218" name="wall" x="3648" y="192" width="96" height="32"/>
-  <object id="219" name="wall" x="3680" y="224" width="32" height="32"/>
   <object id="220" name="wall" x="3808" y="320" width="96" height="32"/>
-  <object id="221" name="wall" x="3840" y="352" width="32" height="32"/>
   <object id="222" name="wall" x="3808" y="192" width="96" height="32"/>
-  <object id="223" name="wall" x="3840" y="224" width="32" height="32"/>
   <object id="224" name="wall" x="3040" y="768" width="32" height="32"/>
   <object id="225" name="wall" x="3040" y="480" width="32" height="32"/>
   <object id="226" name="wall" x="3168" y="480" width="32" height="32"/>
@@ -621,6 +609,18 @@
   <object id="378" name="wall" x="1384" y="136" width="16" height="16"/>
   <object id="379" name="wall" x="1888" y="1728" width="32" height="32"/>
   <object id="380" name="wall" x="1888" y="1600" width="32" height="32"/>
+  <object id="381" name="wall" x="3528" y="360" width="16" height="16"/>
+  <object id="382" name="wall" x="3688" y="360" width="16" height="16"/>
+  <object id="383" name="wall" x="3208" y="360" width="16" height="16"/>
+  <object id="384" name="wall" x="3368" y="360" width="16" height="16"/>
+  <object id="385" name="wall" x="3048" y="360" width="16" height="16"/>
+  <object id="386" name="wall" x="3528" y="232" width="16" height="16"/>
+  <object id="387" name="wall" x="3688" y="232" width="16" height="16"/>
+  <object id="388" name="wall" x="3208" y="232" width="16" height="16"/>
+  <object id="389" name="wall" x="3368" y="232" width="16" height="16"/>
+  <object id="390" name="wall" x="3048" y="232" width="16" height="16"/>
+  <object id="391" name="wall" x="3848" y="232" width="16" height="16"/>
+  <object id="392" name="wall" x="3848" y="360" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="9" name="Enemies" locked="1">
   <object id="42" name="mob" x="736" y="384"/>
