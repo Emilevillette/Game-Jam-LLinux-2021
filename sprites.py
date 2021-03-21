@@ -196,6 +196,8 @@ class Mob(pg.sprite.Sprite):
             self.trajet(1216, 96, 704, 544, 0, 1)
         if self.id == "4":
             self.trajet(928, 192, 1248, 1152, 0, 1)
+        if self.id == "5":
+            self.trajet(928, 192, 1248, 1152, 0, 1)
 
 
         if self.id == "2":
