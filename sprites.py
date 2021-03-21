@@ -225,8 +225,8 @@ class Mob(pg.sprite.Sprite):
         if self.id == "9":
             self.trajet(4070, 1732,726, 570, 0, 1)
         if self.id == "10":
-            self.trajet(1732, 4070, 726, 570, 0, 1)
-
+            self.trajet(4070, 1732,726, 570, 0, 1)
+            
         self.rect.center = self.pos
 
 
