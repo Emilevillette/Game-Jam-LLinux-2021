@@ -124,6 +124,7 @@ class Player(pg.sprite.Sprite):
                 self.image = self.spritesu[self.current_sprite]
             else:
                 self.image = self.spritesr[self.current_sprite]
+            # self.image = pg.transform.scale(self.image, PLAYER_RADIUS)
 
 
 class Wall(pg.sprite.Sprite):
