@@ -49,6 +49,8 @@ class Game:
         img_folder = path.join(game_folder, 'ressources/images')
         map_folder = path.join(game_folder, 'ressources/map')
         snd_folder = path.join(game_folder, 'ressources/sounds')
+        icon = pg.image.load(path.join(img_folder, 'KonfitureKlub.jpg'))
+        pg.display.set_icon(icon)
         self.map = TiledMap(path.join(map_folder, 'whitehouse_test.tmx'))
         self.map_img = self.map.make_map()
         self.map_rect = self.map_img.get_rect()
