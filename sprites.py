@@ -1,14 +1,15 @@
 import pygame as pg
+import sys
 from settings import *
 from os import path
-import sys
+from tilemap import *
 
 vec = pg.math.Vector2  # usefull for lots of thing
 
 
 class Player(pg.sprite.Sprite):
     def __init__(self, game, x, y):
-        self.groups = game.all_sprites
+        self.groups = game.all_sprites, game.playerz
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.vel = vec(0, 0)
@@ -56,6 +57,8 @@ class Player(pg.sprite.Sprite):
         self.direction = 'right'
         self.image = self.spritesl[self.current_sprite]
         self.rect = self.image.get_rect()
+        self.hit_rect = PLAYER_HIT_RECT
+        self.hit_rect.center = self.rect.center
 
     def animate(self):
         self.is_animating = True
@@ -84,31 +87,34 @@ class Player(pg.sprite.Sprite):
 
     def collide_with_walls(self, dir):
         if dir == 'x':
-            hits = pg.sprite.spritecollide(self, self.game.walls, False)
+            hits = pg.sprite.spritecollide(self, self.game.walls, False, collide_hit_rect)
             if hits:
-                if self.vel.x > 0:  # collision par la droite
-                    self.pos.x = hits[0].rect.left - self.rect.width  # place contre le mur
-                if self.vel.x < 0:  # collision par la gauche
-                    self.pos.x = hits[0].rect.right
+                if self.vel.x > 0:
+                    self.pos.x = hits[0].rect.left - self.hit_rect.width / 2.0
+                if self.vel.x < 0:
+                    self.pos.x = hits[0].rect.right + self.hit_rect.width / 2.0
                 self.vel.x = 0
-                self.rect.x = self.pos.x
+                self.hit_rect.centerx = self.pos.x
         if dir == 'y':
-            hits = pg.sprite.spritecollide(self, self.game.walls, False)
+            hits = pg.sprite.spritecollide(self, self.game.walls, False, collide_hit_rect)
             if hits:
-                if self.vel.y > 0:  # collision par la droite
-                    self.pos.y = hits[0].rect.top - self.rect.height  # place contre le mur
-                if self.vel.y < 0:  # collision par la gauche
-                    self.pos.y = hits[0].rect.bottom
+                if self.vel.y > 0:
+                    self.pos.y = hits[0].rect.top - self.hit_rect.height / 2.0
+                if self.vel.y < 0:
+                    self.pos.y = hits[0].rect.bottom + self.hit_rect.height / 2.0
                 self.vel.y = 0
-                self.rect.y = self.pos.y
+                self.hit_rect.centery = self.pos.y
 
     def update(self):
         self.get_keys()
+        self.rect = self.image.get_rect()
+        self.rect.center = self.pos
         self.pos += self.vel * self.game.dt  # dt : frame d'avant, dans "run"
-        self.rect.x = self.pos.x
+        self.hit_rect.centerx = self.pos.x
         self.collide_with_walls('x')
-        self.rect.y = self.pos.y
+        self.hit_rect.centery = self.pos.y
         self.collide_with_walls('y')
+        self.rect.center = self.hit_rect.center
         if self.is_animating == True:
             self.current_sprite += 1
 
@@ -135,6 +141,8 @@ class Mob(pg.sprite.Sprite):
         self.id = id
         self.rect = self.image.get_rect()
         self.pos = vec(x, y)
+        self.hit_rect = MOB_HIT_RECT.copy()
+        self.hit_rect.center = self.rect.center
         self.rect.center = self.pos
         self.rot = 0
         self.vel = vec(0, 0)
@@ -145,7 +153,7 @@ class Mob(pg.sprite.Sprite):
         self.acc = vec(MOB_SPEED, 0).rotate(-self.rot)
         self.pos += self.vel * self.game.dt
         self.rect = self.image.get_rect()
-        self.rect.center = self.pos
+        self.rect.center = self.hit_rect.center
         if self.id == "1":
             if self.passe < 2:
                 if self.passe == 0:
@@ -176,6 +184,7 @@ class Mob(pg.sprite.Sprite):
                     self.vel.x = MOB_SPEED
 
             self.image = pg.transform.rotate(self.game.mob_img, self.rot)
+            self.image = pg.transform.scale(self.image, PLAYER_RADIUS)
         self.rect.center = self.pos
 
 class Wall(pg.sprite.Sprite):
@@ -189,6 +198,7 @@ class Wall(pg.sprite.Sprite):
 
         self.rect.x = x
         self.rect.y = y
+        self.hit_rect = self.rect
 
 # class Wall(pg.sprite.Sprite):
 #     def __init__(self, game, x, y):

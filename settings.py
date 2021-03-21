@@ -1,3 +1,5 @@
+import pygame as pg
+
 # define some colors (R, G, B)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -11,7 +13,7 @@ YELLOW = (255, 255, 0)
 WIDTH = 768#1024   # 16 * 64 or 32 * 32 or 64 * 16
 HEIGHT = 512#768  # 16 * 48 or 32 * 24 or 64 * 12
 FPS = 60
-TITLE = "Tilemap Demo"
+TITLE = "Metal Trump Solid V : The vote Pain"
 BGCOLOR = DARKGREY
 
 TILESIZE = 32
@@ -22,10 +24,13 @@ GRIDHEIGHT = HEIGHT / TILESIZE
 #Mob settings
 MOB_IMG = "Guarde Droite\guarde1.png"
 MOB_SPEED = 600
+MOB_HIT_RECT = pg.Rect(0, 0, 640, 640)
+
 # Player settings
 PLAYER_SPEED = 500
 PLAYER_IMG = 'trump1sprite.png'
-PLAYER_RADIUS = (32,32)
+PLAYER_RADIUS = (128,128)
+PLAYER_HIT_RECT = pg.Rect(0, 0, 32, 32)
 
 # Effects
 NIGHT_COLOR = (20, 20, 20)

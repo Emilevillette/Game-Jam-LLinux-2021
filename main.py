@@ -40,6 +40,7 @@ class Game:
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.mobs = pg.sprite.Group()
+        self.playerz = pg.sprite.Group()
         # self.player = Player(self, 10, 10) # départ du joueur en nombre de carré
         # for row, tiles in enumerate(self.map.data): #enumerate pr avoir les 2 données index:value
         #     for col, tile in enumerate(tiles):
@@ -74,6 +75,12 @@ class Game:
         # update portion of the game loop
         self.all_sprites.update()
         self.camera.update(self.player) # ici on peut mettre n'importe quel sprite
+        hits = pg.sprite.spritecollide(self.player, self.mobs, False, collide_hit_rect)
+        for hit in hits:
+            self.playing = False
+        # hits = pg.sprite.groupcollide(self.mobs, self.playerz, False, False)
+        # for hit in hits:
+        #     self.playing = False
 
     def draw_grid(self):
         for x in range(0, WIDTH, TILESIZE):
