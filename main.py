@@ -9,6 +9,7 @@ from os import path
 from settings import *
 from sprites import *
 from tilemap import *
+from random import choice
 
 class Game:
     def __init__(self):
@@ -37,6 +38,12 @@ class Game:
         self.light_rect = self.light_mask.get_rect()
         # sound loading
         pg.mixer.music.load(path.join(snd_folder, BG_MUSIC))
+        self.riche_sound = pg.mixer.Sound(path.join(snd_folder, RICH_SOUND))
+        self.win_sound = pg.mixer.Sound(path.join(snd_folder, WIN_SOUND))
+        self.hit_sound = []
+        for snd in HIT_SOUND:
+            self.hit_sound.append(pg.mixer.Sound(path.join(snd_folder, snd)))
+        
 
     def new(self):
         # initialize all variables and do all the setup for a new game
@@ -62,6 +69,7 @@ class Game:
             if tile_object.name == "objectif":
                 Objectif(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
         self.camera = Camera(self.map.width, self.map.height)
+        # self.riche_sound.play()
 
 
     def run(self):
@@ -84,9 +92,11 @@ class Game:
         self.camera.update(self.player) # ici on peut mettre n'importe quel sprite
         hits = pg.sprite.spritecollide(self.player, self.mobs, False, collide_hit_rect)
         for hit in hits:
+            choice(self.hit_sound).play()
             self.playing = False
         hits = pg.sprite.spritecollide(self.player, self.objectif, False, collide_hit_rect)
         for hit in hits:
+            self.win_sound.play()
             self.playing = False
         # hits = pg.sprite.groupcollide(self.mobs, self.playerz, False, False)
         # for hit in hits:
