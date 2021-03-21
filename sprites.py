@@ -156,7 +156,6 @@ class Mob(pg.sprite.Sprite):
         self.image = pg.transform.rotate(self.game.mob_img, self.rot)
         self.image = pg.transform.scale(self.image, (64,64))
         self.rect.center = self.pos
-        print(self.passe)
         if self.passe < 2:
             if self.passe == 0:
                 self.vel.x = cw * MOB_SPEED
@@ -217,10 +216,16 @@ class Mob(pg.sprite.Sprite):
             #dest spawn dest spawn
         if self.id == "16":
             self.trajet(3100, 2600, 2800, 2100, 0, 1)
+        if self.id == "14":
+            self.trajet(2200, 3200, 2200, 1600, 0, 1)
+        if self.id == "13":
+            self.trajet(3450, 2000, 2300, 2020, 0, 1)
+        if self.id == "15":
+            self.trajet(3450, 2000, 2800, 2020, 0, 1)
 
         #Dernier salon avec ordinateur
         if self.id == "11":
-            self.trajet(4000, 3000, 100, 100, 0, 1)
+            self.trajet(3070, 2500, 2326, 2850, 0, 1)
 
 
         self.rect.center = self.pos
