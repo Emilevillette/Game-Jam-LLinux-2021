@@ -15,7 +15,7 @@ class Player(pg.sprite.Sprite):
         self.pos = vec(x, y)
         self.is_animating = False
         game_folder = path.dirname(__file__)
-        sprites_folder = path.join(game_folder, '../ressources/images')
+        sprites_folder = path.join(game_folder, 'ressources/images')
         self.spritesl = []
         self.spritesl.append(pg.image.load(path.join(sprites_folder, "Spritegauche/Sprite-0002gauche1.png")))
         self.spritesl.append(pg.image.load(path.join(sprites_folder, "Spritegauche/Sprite-0002gauche2.png")))
