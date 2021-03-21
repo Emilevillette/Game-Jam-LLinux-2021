@@ -21,3 +21,7 @@ GRIDHEIGHT = HEIGHT / TILESIZE
 # Player settings
 PLAYER_SPEED = 1000
 PLAYER_IMG = 'trump1sprite.png'
+
+#Mob settings
+MOB_IMG = "Guarde Droite\guarde1.png"
+MOB_SPEED = 600

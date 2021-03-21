@@ -125,6 +125,57 @@ class Player(pg.sprite.Sprite):
             else:
                 self.image = self.spritesr[self.current_sprite]
 
+class Mob(pg.sprite.Sprite):
+    def __init__(self, game, x, y, id):
+        self.groups = game.all_sprites, game.mobs
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.image = game.mob_img
+        self.game = game
+        self.id = id
+        self.rect = self.image.get_rect()
+        self.pos = vec(x, y)
+        self.rect.center = self.pos
+        self.rot = 0
+        self.vel = vec(0, 0)
+        self.acc = vec(0, 0)
+        self.passe = 0
+
+    def update(self):
+        self.acc = vec(MOB_SPEED, 0).rotate(-self.rot)
+        self.pos += self.vel * self.game.dt
+        self.rect = self.image.get_rect()
+        self.rect.center = self.pos
+        if self.id == "1":
+            if self.passe < 2:
+                if self.passe == 0:
+                    self.vel.x = MOB_SPEED
+                if self.pos[0] >= 1216 and self.passe == 0:
+                    self.passe = 1
+                    self.rot += -90
+                    self.vel.x = 0
+                    if self.passe == 1:
+                        self.vel.y = MOB_SPEED
+                if self.pos[1] >= 704:
+                    self.rot -= 90
+                    self.vel.y = 0
+                    self.passe = 2
+            if self.passe >= 2:
+                if self.passe == 2:
+                    self.vel.x = -MOB_SPEED
+                if self.pos[0] <= 96 and self.passe == 2:
+                    self.passe = 3
+                    self.rot -= 90
+                    self.vel.x = 0
+                    if self.passe == 3:
+                        self.vel.y = -MOB_SPEED
+                if self.pos[1] <= 544:
+                    self.rot = 0
+                    self.passe = 0
+                    self.vel.y = 0
+                    self.vel.x = MOB_SPEED
+
+            self.image = pg.transform.rotate(self.game.mob_img, self.rot)
+        self.rect.center = self.pos
 
 class Wall(pg.sprite.Sprite):
     def __init__(self, game, x, y, w, h):
