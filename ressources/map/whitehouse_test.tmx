@@ -623,7 +623,7 @@
   <object id="392" name="wall" x="3848" y="360" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="9" name="Enemies">
-  <object id="42" name="mob" x="736" y="384"/>
+  <object id="42" name="mob" type="2" x="736" y="384"/>
   <object id="45" name="mob" type="1" x="112" y="560"/>
  </objectgroup>
  <layer id="6" name="Enemies" width="150" height="100" locked="1">
