@@ -115,10 +115,10 @@ class Game:
         # update portion of the game loop
         self.all_sprites.update()
         self.camera.update(self.player) # ici on peut mettre n'importe quel sprite
-        # hits = pg.sprite.spritecollide(self.player, self.mobs, False, collide_hit_rect)
-        # for hit in hits:
-        #     choice(self.hit_sound).play()
-        #     self.playing = False
+        hits = pg.sprite.spritecollide(self.player, self.mobs, False, collide_hit_rect)
+        for hit in hits:
+            choice(self.hit_sound).play()
+            self.playing = False
         hits = pg.sprite.spritecollide(self.player, self.objectif, False, collide_hit_rect)
         for hit in hits:
             self.win_sound.play()
