@@ -201,7 +201,11 @@ class Mob(pg.sprite.Sprite):
         if self.id == "2":
             self.trajet(1600, 1200, 1300, 880, 0, 1)
         if self.id == "7":
-            self.trajet(1600, 1200, 880, 1300, 0, 1)
+            self.trajet(1600, 1200, 1300, 880, 0, 1)
+        if self.id == "6":
+            self.trajet(1632, 96, 1792, 1408, 0, 1)
+        if self.id == "20":
+            self.trajet(1632, 96, 1792, 1408, 0, 1)
 
         #FBI
         if self.id == "8":
@@ -227,6 +231,11 @@ class Mob(pg.sprite.Sprite):
         if self.id == "11":
             self.trajet(3070, 2500, 2326, 2850, 0, 1)
 
+        #Dernier couloir
+        if self.id == "9":
+            self.trajet(4070, 1732,726, 570, 0, 1)
+        if self.id == "10":
+            self.trajet(4070, 1732,726, 570, 0, 1)
 
         self.rect.center = self.pos
 
