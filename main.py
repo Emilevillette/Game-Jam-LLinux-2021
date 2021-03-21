@@ -28,6 +28,12 @@ class Game:
         self.map_rect = self.map_img.get_rect()
         self.player_img = pg.image.load(path.join(img_folder, PLAYER_IMG)).convert_alpha()
         self.mob_img = pg.image.load(path.join(img_folder, MOB_IMG)).convert_alpha()
+        # lighting effect
+        self.fog = pg.Surface((WIDTH, HEIGHT))
+        self.fog.fill(NIGHT_COLOR)
+        self.light_mask = pg.image.load(path.join(img_folder, LIGHT_MASK)).convert_alpha()
+        self.light_mask = pg.transform.scale(self.light_mask, LIGHT_RADIUS)
+        self.light_rect = self.light_mask.get_rect()
 
     def new(self):
         # initialize all variables and do all the setup for a new game
@@ -74,13 +80,16 @@ class Game:
             pg.draw.line(self.screen, LIGHTGREY, (x, 0), (x, HEIGHT))
         for y in range(0, HEIGHT, TILESIZE):
             pg.draw.line(self.screen, LIGHTGREY, (0, y), (WIDTH, y))
-
+   
     def draw(self):
-        # self.screen.fill(BGCOLOR)
+        self.screen.fill(NIGHT_COLOR)
         self.screen.blit(self.map_img, self.camera.apply_rect(self.map_rect))
-        # self.draw_grid()
         for sprite in self.all_sprites:
             self.screen.blit(sprite.image, self.camera.apply(sprite))
+        self.fog.fill(NIGHT_COLOR)
+        self.light_rect.center = self.camera.apply(self.player).center
+        self.fog.blit(self.light_mask, self.light_rect)
+        self.screen.blit(self.fog, (0, 0), special_flags=pg.BLEND_MULT)#obtien les pixels de tt les couches
         pg.display.flip()
 
     def events(self):

@@ -18,10 +18,16 @@ TILESIZE = 32
 GRIDWIDTH = WIDTH / TILESIZE
 GRIDHEIGHT = HEIGHT / TILESIZE
 
-# Player settings
-PLAYER_SPEED = 1000
-PLAYER_IMG = 'trump1sprite.png'
 
 #Mob settings
 MOB_IMG = "Guarde Droite\guarde1.png"
 MOB_SPEED = 600
+# Player settings
+PLAYER_SPEED = 500
+PLAYER_IMG = 'trump1sprite.png'
+PLAYER_RADIUS = (32,32)
+
+# Effects
+NIGHT_COLOR = (20, 20, 20)
+LIGHT_RADIUS = (1200,1200)
+LIGHT_MASK = "light_350_soft.png"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="150" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="393">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="150" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="399">
  <editorsettings>
   <export target="whitehouse_test.csv" format="csv"/>
  </editorsettings>
@@ -323,7 +323,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="7" name="Obstacles" locked="1">
+ <objectgroup id="7" name="Obstacles">
   <object id="9" name="wall" x="0" y="0" width="32" height="1376"/>
   <object id="19" name="wall" x="1696" y="800" width="32" height="576"/>
   <object id="22" name="player" x="736" y="96"/>
@@ -621,9 +621,15 @@
   <object id="390" name="wall" x="3048" y="232" width="16" height="16"/>
   <object id="391" name="wall" x="3848" y="232" width="16" height="16"/>
   <object id="392" name="wall" x="3848" y="360" width="16" height="16"/>
+  <object id="393" name="wall" x="832" y="384" width="16" height="32"/>
+  <object id="394" name="wall" x="832" y="320" width="16" height="32"/>
+  <object id="395" name="wall" x="832" y="256" width="16" height="32"/>
+  <object id="396" name="wall" x="1232" y="384" width="16" height="24"/>
+  <object id="397" name="wall" x="1232" y="320" width="16" height="24"/>
+  <object id="398" name="wall" x="1232" y="256" width="16" height="24"/>
  </objectgroup>
- <objectgroup id="9" name="Enemies">
-  <object id="42" name="mob" x="736" y="384"/>
+ <objectgroup id="9" name="Enemies" locked="1">
+  <object id="42" name="mob" type="2" x="736" y="384"/>
   <object id="45" name="mob" type="1" x="112" y="560"/>
  </objectgroup>
  <layer id="6" name="Enemies" width="150" height="100" locked="1">
