@@ -190,6 +190,7 @@ class Mob(pg.sprite.Sprite):
         self.pos += self.vel * self.game.dt
         self.rect = self.image.get_rect()
         self.rect.center = self.hit_rect.center
+        
         if self.id == "1":
             self.trajet(1216, 96, 704, 544, 0, 1)
         if self.id == "3":
@@ -198,6 +199,19 @@ class Mob(pg.sprite.Sprite):
             self.trajet(1216, 96, 704, 544, 0, 1)
         if self.id == "5":
             self.trajet(1216, 96, 704, 544, 0, 1)
+
+
+        if self.id == "2":
+            self.trajet(1600, 1200, 1300, 880, 0, 1)
+        if self.id == "7":
+            self.trajet(1600, 1200, 880, 1300, 0, 1)
+
+        #FBI
+        if self.id == "8":
+            self.trajet(2400, 1300, 60, 400, 0, 1)
+        if self.id == "23":
+            self.trajet(1300, 2500, 60, 400, 0, 1)
+
         self.rect.center = self.pos
 
 
