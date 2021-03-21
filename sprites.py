@@ -151,37 +151,38 @@ class Mob(pg.sprite.Sprite):
         self.passe = 0
         self.first = True
 
-    def trajet(self, x1, x2, y1, y2):
+    def trajet(self, x1, x2, y1, y2, rota, cw):
+        self.rot = rota
         self.image = pg.transform.rotate(self.game.mob_img, self.rot)
-        self.image = pg.transform.scale(self.image, PLAYER_RADIUS)
+        self.image = pg.transform.scale(self.image, (64,64))
         self.rect.center = self.pos
         if self.passe < 2:
             if self.passe == 0:
-                self.vel.x = MOB_SPEED
+                self.vel.x = cw * MOB_SPEED
             if self.pos[0] >= x1 and self.passe == 0:
                 self.passe = 1
                 self.rot += -90
                 self.vel.x = 0
                 if self.passe == 1:
-                    self.vel.y = MOB_SPEED
+                    self.vel.y = cw * MOB_SPEED
             if self.pos[1] >= y1:
                 self.rot -= 90
                 self.vel.y = 0
                 self.passe = 2
         if self.passe >= 2:
             if self.passe == 2:
-                self.vel.x = MOB_SPEED
+                self.vel.x = -cw * MOB_SPEED
             if self.pos[0] <= x2 and self.passe == 2:
                 self.passe = 3
                 self.rot -= 90
                 self.vel.x = 0
                 if self.passe == 3:
-                    self.vel.y = MOB_SPEED
+                    self.vel.y = -cw * MOB_SPEED
             if self.pos[1] <= y2:
                 self.rot = 0
                 self.passe = 0
                 self.vel.y = 0
-                self.vel.x = MOB_SPEED
+                self.vel.x =  cw * MOB_SPEED
 
     def update(self):
         self.acc = vec(MOB_SPEED, 0).rotate(-self.rot)
@@ -192,14 +193,12 @@ class Mob(pg.sprite.Sprite):
             if self.first == True:
                 passe = 0
                 self.first = False
-            self.trajet(1216, 96, 704, 544)
+            self.trajet(1216, 96, 704, 544, 0, 1)
         if self.id == "3":
             if self.first == True:
                 passe = 2
                 self.first = False
-            self.trajet(96, 1216, 544, 704)
-        self.image = pg.transform.rotate(self.game.mob_img, self.rot)
-        self.image = pg.transform.scale(self.image, PLAYER_RADIUS)
+            self.trajet(96, 1216, 544, 704, -180, -1)
         self.rect.center = self.pos
 
 

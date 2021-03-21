@@ -23,7 +23,7 @@ GRIDHEIGHT = HEIGHT / TILESIZE
 
 #Mob settings
 MOB_IMG = "Guarde Droite\guarde1.png"
-MOB_SPEED = 20
+MOB_SPEED = 300
 MOB_HIT_RECT = pg.Rect(0, 0, 640, 640)
 
 # Player settings
