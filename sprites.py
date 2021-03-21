@@ -213,6 +213,13 @@ class Mob(pg.sprite.Sprite):
         if self.id == "23":
             self.trajet(1300, 2500, 60, 400, 0, 1)
 
+        #OVALE
+        if self.id == "12":
+            self.trajet(3180, 2500, 1300, 1121, 0, 1)
+            #dest spawn dest spawn
+        if self.id == "16":
+            self.trajet(3100, 2600, 2800, 2100, 0, 1)
+
         self.rect.center = self.pos
 
 
