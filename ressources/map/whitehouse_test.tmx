@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="150" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="400">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="150" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="418">
  <editorsettings>
   <export target="whitehouse_test.csv" format="csv"/>
  </editorsettings>
@@ -377,7 +377,7 @@
   <object id="83" name="wall" x="928" y="32" width="32" height="128"/>
   <object id="84" name="wall" x="864" y="32" width="32" height="32"/>
   <object id="85" name="wall" x="992" y="32" width="32" height="32"/>
-  <object id="86" name="wall" x="1088" y="64" width="32" height="64"/>
+  <object id="86" name="wall" x="1088" y="64" width="32" height="95"/>
   <object id="87" name="wall" x="1120" y="32" width="128" height="32"/>
   <object id="88" name="wall" x="0" y="1376" width="32" height="512"/>
   <object id="89" name="wall" x="32" y="1856" width="1696" height="32"/>
@@ -628,9 +628,23 @@
   <object id="397" name="wall" x="1232" y="320" width="16" height="24"/>
   <object id="398" name="wall" x="1232" y="256" width="16" height="24"/>
  </objectgroup>
- <objectgroup id="9" name="Enemies" locked="1">
+ <objectgroup id="9" name="Enemies">
   <object id="42" name="mob" type="2" x="736" y="384"/>
-  <object id="45" name="mob" type="1" x="112" y="560"/>
+  <object id="45" name="mob" type="1" x="112.5" y="560"/>
+  <object id="400" name="mob" type="3" x="1232.58" y="718.333"/>
+  <object id="401" name="mob" type="4" x="208.667" y="1071.33"/>
+  <object id="403" name="mob" type="5" x="913.333" y="1069.33"/>
+  <object id="407" name="mob" type="6" x="127" y="1441"/>
+  <object id="408" name="mob" type="7" x="1199" y="1272"/>
+  <object id="409" name="mob" type="8" x="1315" y="386"/>
+  <object id="410" name="mob" type="9" x="1732" y="726.667"/>
+  <object id="411" name="mob" type="10" x="4076" y="568"/>
+  <object id="412" name="mob" type="11" x="3030.67" y="98.6667"/>
+  <object id="413" name="mob" type="12" x="2493.33" y="1121.33"/>
+  <object id="414" name="mob" type="13" x="2016" y="1693.33"/>
+  <object id="415" name="mob" type="14" x="3569.33" y="1618.67"/>
+  <object id="416" name="mob" type="15" x="2514.67" y="2862.67"/>
+  <object id="417" name="mob" type="16" x="2577.33" y="2094.67"/>
  </objectgroup>
  <objectgroup id="10" name="Destination" locked="1">
   <object id="399" name="objectif" x="2767" y="2511.5" width="62.5" height="62"/>
