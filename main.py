@@ -27,6 +27,7 @@ class Game:
         self.map_img = self.map.make_map()
         self.map_rect = self.map_img.get_rect()
         self.player_img = pg.image.load(path.join(img_folder, PLAYER_IMG)).convert_alpha()
+        self.mob_img = pg.image.load(path.join(img_folder, MOB_IMG)).convert_alpha()
         # lighting effect
         self.fog = pg.Surface((WIDTH, HEIGHT))
         self.fog.fill(NIGHT_COLOR)
@@ -38,6 +39,7 @@ class Game:
         # initialize all variables and do all the setup for a new game
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
+        self.mobs = pg.sprite.Group()
         # self.player = Player(self, 10, 10) # départ du joueur en nombre de carré
         # for row, tiles in enumerate(self.map.data): #enumerate pr avoir les 2 données index:value
         #     for col, tile in enumerate(tiles):
@@ -50,6 +52,8 @@ class Game:
                 self.player = Player(self, tile_object.x, tile_object.y) 
             if tile_object.name == 'wall':
                 Wall(self, tile_object.x, tile_object.y, tile_object.width, tile_object.height)
+            if tile_object.name == "mob":
+                Mob(self, tile_object.x, tile_object.y, tile_object.type)
         self.camera = Camera(self.map.width, self.map.height)
 
 
