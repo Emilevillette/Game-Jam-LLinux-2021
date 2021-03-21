@@ -156,6 +156,7 @@ class Mob(pg.sprite.Sprite):
         self.image = pg.transform.rotate(self.game.mob_img, self.rot)
         self.image = pg.transform.scale(self.image, (64,64))
         self.rect.center = self.pos
+        print(self.passe)
         if self.passe < 2:
             if self.passe == 0:
                 self.vel.x = cw * MOB_SPEED
@@ -190,15 +191,9 @@ class Mob(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = self.hit_rect.center
         if self.id == "1":
-            if self.first == True:
-                passe = 0
-                self.first = False
             self.trajet(1216, 96, 704, 544, 0, 1)
         if self.id == "3":
-            if self.first == True:
-                passe = 2
-                self.first = False
-            self.trajet(96, 1216, 544, 704, -180, -1)
+            self.trajet(1216, 96, 704, 544, 0, 1)
         self.rect.center = self.pos
 
 
