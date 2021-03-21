@@ -40,3 +40,6 @@ LIGHT_MASK_MED = "light_350_med.png"
 
 #Music
 BG_MUSIC = "gamejam.mp3"
+HIT_SOUND = ["hit1.mp3","hit2.mp3","hit3.mp3"]
+WIN_SOUND = "win1.mp3"
+RICH_SOUND = "rich1.mp3"
