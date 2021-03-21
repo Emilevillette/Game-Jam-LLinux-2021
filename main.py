@@ -173,6 +173,7 @@ class Game:
         pg.display.flip()
         pg.event.wait()
         waiting = True
+        x = 1
         while waiting:
             self.clock.tick(FPS)
             for event in pg.event.get():
