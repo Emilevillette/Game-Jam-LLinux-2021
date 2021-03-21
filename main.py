@@ -23,6 +23,7 @@ class Game:
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'ressources/images')
         map_folder = path.join(game_folder, 'ressources/map')
+        snd_folder = path.join(game_folder, 'ressources/sounds')
         self.map = TiledMap(path.join(map_folder, 'whitehouse_test.tmx'))
         self.map_img = self.map.make_map()
         self.map_rect = self.map_img.get_rect()
@@ -34,6 +35,8 @@ class Game:
         self.light_mask = pg.image.load(path.join(img_folder, LIGHT_MASK)).convert_alpha()
         self.light_mask = pg.transform.scale(self.light_mask, LIGHT_RADIUS)
         self.light_rect = self.light_mask.get_rect()
+        # sound loading
+        pg.mixer.music.load(path.join(snd_folder, BG_MUSIC))
 
     def new(self):
         # initialize all variables and do all the setup for a new game
@@ -64,6 +67,7 @@ class Game:
     def run(self):
         # game loop - set self.playing = False to end the game
         self.playing = True
+        pg.mixer.music.play(loops=-1)
         while self.playing:
             self.dt = self.clock.tick(FPS) / 1000
             self.events()

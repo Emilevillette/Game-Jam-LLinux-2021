@@ -38,3 +38,5 @@ LIGHT_RADIUS = (1200,1200)
 LIGHT_MASK = "light_350_soft.png"
 LIGHT_MASK_MED = "light_350_med.png"
 
+#Music
+BG_MUSIC = "gamejam.mp3"
