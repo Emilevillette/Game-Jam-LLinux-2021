@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="150" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="442">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="150" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="444">
  <editorsettings>
   <export target="whitehouse_test.csv" format="csv"/>
  </editorsettings>
@@ -648,15 +648,15 @@
   <object id="439" name="wall" x="1439.67" y="1151.83" width="96.6666" height="31"/>
  </objectgroup>
  <objectgroup id="9" name="Enemies">
-  <object id="42" name="mob" type="2" x="736" y="384"/>
+  <object id="42" name="mob" type="2" x="1200" y="880"/>
   <object id="45" name="mob" type="1" x="112.5" y="560"/>
   <object id="401" name="mob" type="4" x="208.667" y="1071.33"/>
   <object id="403" name="mob" type="5" x="913.333" y="1069.33"/>
-  <object id="407" name="mob" type="6" x="127" y="1441"/>
+  <object id="407" name="mob" type="6" x="112" y="1424"/>
   <object id="408" name="mob" type="7" x="1199" y="1272"/>
   <object id="409" name="mob" type="8" x="1315" y="386"/>
   <object id="410" name="mob" type="9" x="1732" y="726.667"/>
-  <object id="411" name="mob" type="10" x="4076" y="568"/>
+  <object id="411" name="mob" type="10" x="4072" y="568"/>
   <object id="412" name="mob" type="11" x="3030.67" y="98.6667"/>
   <object id="413" name="mob" type="12" x="2493.33" y="1121.33"/>
   <object id="414" name="mob" type="13" x="2016" y="1693.33"/>
@@ -664,6 +664,8 @@
   <object id="416" name="mob" type="15" x="2514.67" y="2862.67"/>
   <object id="417" name="mob" type="16" x="2577.33" y="2094.67"/>
   <object id="441" name="mob" type="3" x="1200" y="688"/>
+  <object id="442" name="mob" type="20" x="1637.33" y="1809.33"/>
+  <object id="443" name="mob" type="21" x="2480" y="400"/>
  </objectgroup>
  <objectgroup id="10" name="Destination" locked="1">
   <object id="399" name="objectif" x="2767" y="2511.5" width="62.5" height="62"/>
